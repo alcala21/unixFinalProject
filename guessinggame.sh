@@ -1,12 +1,22 @@
-all: README.md
+#!/usr/bin/env bash
+# File: guessingame2.sh
 
-README.md:
-  echo "# The Unix Workbench Final Project \n" > README.md
-  echo "The make command was run on: \n" >> README.md
-  date >> README.md
-  echo "\n" >> README.md
-  echo "The file guessinggame.sh has the following number of lines: \n" >> README.md
-  wc -l guessinggame.sh | egrep -o "[0-9]+" >> README.md
+rightGuess=0
 
-clean:
-  rm README.md
+function getNumFiles {
+  numFiles=$(ls | wc -l)
+  echo $numFiles
+}
+
+while [[ $rightGuess -eq 0 ]]
+do
+  echo "How many files are in the current directory?"
+  read guessNumber
+  trueValue=$(getNumFiles)
+  if [[ $guessNumber -eq $trueValue ]]
+  then
+    rightGuess=1
+  fi
+done
+
+echo "Congratulations! You guessed the right number."
