@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# File: guessingame2.sh
+# File: guessingame.sh
 
 rightGuess=0
 
